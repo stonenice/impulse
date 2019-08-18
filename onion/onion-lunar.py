@@ -137,6 +137,20 @@ app = Flask(__name__)
 onion = OnionLunar()
 
 
+@app.route('/')
+def home():
+    html = """
+    <span style="color:gray">&copy;Copyright since 2019 xasync.com</span>
+    <center>
+        <div style="color:lightseagreen;margin-top:80px">
+            <h1><span>Welcome to use Onion-Lunar!</span></h1>
+            <p style="float:right;margin-right:160px"><b>—— Power by xasync.com</b></p>
+        <div>
+    </center>
+    """
+    return html
+
+
 @app.route('/solar2lunar', methods=['GET'])
 def solar2lunar():
     try:

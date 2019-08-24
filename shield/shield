@@ -1,0 +1,29 @@
+#!/bin/bash
+
+if [ $# -le 0 ]; then
+    echo 'shield -h'
+    exit
+fi 
+
+declare -a args=($*)
+
+cmd=$1
+cmd_args=${args[@]:1:$#}
+
+case $1 in
+    regist)
+        shield-regist ${cmd_args}
+    ;;
+    -h|--help)
+        echo 'shield [options] subcommond ...'
+        echo '    subcommond:'
+        echo '        regist    register application'
+        echo '    options:'
+        echo '        -h, --help    show helps'
+        echo '    examples:'
+        echo '        shield regist -h    #show the helps of regist' 
+    ;;
+    *)
+        echo 'the subcommand is unrecognized'
+    ;;
+esac

@@ -11,6 +11,8 @@ raw_pwd = arc4.ARC4(os.getenv('SYS_CFG_PWD')).decrypt(safe_pwd)
 # ============================= FLASK CONFIG ============================================
 
 DEBUG = True
+JSON_AS_ASCII = False
+JSON_SORT_KEYS = False
 
 # sqlalchemy
 SQLALCHEMY_DATABASE_URI = "mysql+pymysql://{user}:{password}@{host}:{port}/{db}?charset=utf8".format(

@@ -1,11 +1,10 @@
 # coding=utf-8
 from exts import db
-# from sqlalchemy.types import *
+from supports import ModelJsonMixin
 import datetime
 
 
-
-class School(db.Model):
+class School(db.Model, ModelJsonMixin):
     __tablename__ = 'edu_school'
     # 自增ID
     id = db.Column(db.BigInteger, primary_key=True, autoincrement=True, nullable=False)

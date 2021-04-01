@@ -1,4 +1,4 @@
 flask~=1.1.2
 arc4~=0.0.4
 pyhocon~=0.3.57
-sqlathanor~=0.7.0
+sqlalchemy~=1.4.4

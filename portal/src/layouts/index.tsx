@@ -1,7 +1,7 @@
 import { connect,history } from 'umi'
 import { Component } from 'react'
-import {trim} from 'lodash'
-import { TabBar } from 'antd-mobile'
+import {trim,isEmpty} from 'lodash'
+import { Toast,TabBar } from 'antd-mobile'
 import { HomeOutlined, UserOutlined, DashboardOutlined } from '@ant-design/icons'
 
 class Layout extends Component<any, any>{
@@ -18,11 +18,23 @@ class Layout extends Component<any, any>{
   onPressTab(tabKey: string) {
     const { dispatch } = this.props;
     console.log('onPressTab:',tabKey)
+    //默认值
+    if(isEmpty(tabKey)){
+      tabKey='home';
+    }
+    if(tabKey!='home'){
+      Toast.offline('暂未开放使用!');
+      return;
+    }
     dispatch({
       type: 'system/changeAppTag',
       payload: tabKey
     })
-    history.push('/'+tabKey)
+    if(tabKey=='home'){
+        history.push('/')
+    }else{
+        history.push('/'+tabKey)
+    }
   }
 
   render() {
@@ -32,7 +44,7 @@ class Layout extends Component<any, any>{
     } = this.props;
 
     return (
-      <div style={{ position: 'fixed', height: '100%', width: '100%', top: 0 }}>
+      <div style={{ position: 'fixed', height: '100%', width: '100%', top: 0,backgroundColor:'#eee' }}>
         <TabBar
           unselectedTintColor="#949494"
           tintColor="#33A3F4"
